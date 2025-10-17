@@ -1,6 +1,6 @@
 package Polygons;
 
-public class RegularPentagon implements Polygon {
+public class RegularPentagon extends Polygon {
     private final double s;
 
     public RegularPentagon(double s) {

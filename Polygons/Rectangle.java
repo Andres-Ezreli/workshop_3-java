@@ -1,6 +1,6 @@
 package Polygons;
 
-public class Rectangle implements Polygon {
+public class Rectangle extends Polygon {
     private final double w, h;
 
     public Rectangle(double w, double h) {

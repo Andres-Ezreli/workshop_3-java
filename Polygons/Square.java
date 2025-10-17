@@ -1,6 +1,6 @@
 package Polygons;
 
-public class Square implements Polygon {
+public class Square extends Polygon {
     private final double side;
 
     public Square(double side) {

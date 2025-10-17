@@ -1,7 +1,10 @@
 package Polygons;
 
-public interface Polygon {
-    double perimeter();
-    double area();
-    String describe();
+public abstract class Polygon {
+    public abstract double perimeter();
+    public abstract double area();
+
+    public String describe() {
+        return String.format("%s Perimeter=%.3f Area=%.3f", this.getClass().getSimpleName(), perimeter(), area());
+    }
 }

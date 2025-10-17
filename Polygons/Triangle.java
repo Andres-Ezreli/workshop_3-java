@@ -1,6 +1,6 @@
 package Polygons;
 
-public class Triangle implements Polygon {
+public class Triangle extends Polygon {
     private final double a, b, c;
 
     public Triangle(double a, double b, double c) {

@@ -1,6 +1,6 @@
 package Polygons;
 
-public class RegularHexagon implements Polygon {
+public class RegularHexagon extends Polygon {
     private final double s;
 
     public RegularHexagon(double s) {
