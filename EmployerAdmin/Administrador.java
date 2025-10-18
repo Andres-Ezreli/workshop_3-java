@@ -1,3 +1,5 @@
+package EmployerAdmin;
+
 public class Administrador extends Empleado {
     private String departamento;
 

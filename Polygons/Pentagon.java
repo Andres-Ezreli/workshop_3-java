@@ -1,11 +1,13 @@
 
 
+package Polygons;
+
 import java.util.List;
 
-public class RegularPentagon extends Poligono {
+public class Pentagon extends Poligono {
     private final double s;
 
-    public RegularPentagon(double s) {
+    public Pentagon(double s) {
         super(List.of(s, s, s, s, s));
         this.s = s;
     }

@@ -1,3 +1,5 @@
+package EmployerAdmin;
+
 public class Curso {
     private String nombre;
 

@@ -1,5 +1,7 @@
 
 
+import Polygons.*;
+
 public class PoligonoTests {
     private static final double EPS = 1e-6;
 

@@ -1,11 +1,11 @@
-
+package Polygons;
 
 import java.util.List;
 
-public class RegularHexagon extends Poligono {
+public class Hexagon extends Poligono {
     private final double s;
 
-    public RegularHexagon(double s) {
+    public Hexagon(double s) {
         super(List.of(s, s, s, s, s, s));
         this.s = s;
     }
