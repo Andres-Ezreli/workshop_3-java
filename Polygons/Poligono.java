@@ -25,10 +25,8 @@ public abstract class Poligono {
         return sum;
     }
 
-    // Subclasses must implement area calculation
     public abstract double calcularArea();
 
-    // Return a human-friendly polygon type based on number of sides
     public String tipoPoligono() {
         int n = lados.size();
         switch (n) {
@@ -40,13 +38,10 @@ public abstract class Poligono {
         }
     }
 
-    // Return info string: type and area
     public String obtenerInfo() {
-        // Use explicit Unicode escapes for accented characters to avoid console encoding issues
         return String.format("%s - Area real = %.3f", tipoPoligono(), calcularArea());
     }
 
-    // Backwards-compatible: print info
     public void mostrarInfo() {
         System.out.println(obtenerInfo());
     }

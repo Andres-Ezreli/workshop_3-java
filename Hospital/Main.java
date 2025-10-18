@@ -19,24 +19,18 @@ public class Main {
         Paciente p2 = new Paciente("Luisa Fernandez", 30);
         Paciente p3 = new Paciente("Ana Martinez", 10);
 
-        // Register patients in hospital
         h.addPaciente(p1);
         h.addPaciente(p2);
         h.addPaciente(p3);
 
-        // Many-to-many associations (bidirectional)
-        // p1 is attended by m1 and m2
         p1.addMedico(m1);
         p1.addMedico(m2);
 
-        // p2 is attended by m2
         p2.addMedico(m2);
 
-        // p3 is attended by m2 and m3
         p3.addMedico(m2);
         p3.addMedico(m3);
 
-        // Print lists to verify
         System.out.println(h);
         System.out.println("Medicos:");
         for (Medico m : h.getMedicos()) System.out.println("  " + m + " -> Hospital=" + m.getHospital().getNombre());

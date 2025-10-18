@@ -18,13 +18,11 @@ public class Hospital {
     public List<Medico> getMedicos() { return medicos; }
     public List<Paciente> getPacientes() { return pacientes; }
 
-    // One-to-many helpers
     public void addMedico(Medico m) {
         if (m == null) return;
         if (!medicos.contains(m)) {
             medicos.add(m);
         }
-        // ensure medico points here
         if (m.getHospital() != this) m.setHospital(this);
     }
 

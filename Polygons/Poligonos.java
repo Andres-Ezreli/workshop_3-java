@@ -10,20 +10,17 @@ public class Poligonos {
         if (m < 3 || m > 6) throw new IllegalArgumentException("Solo soportado 3..6 lados");
 
         final double EPS = 1e-6;
-        // helper: check approx equality
         java.util.function.BiPredicate<Double, Double> eq = (x, y) -> Math.abs(x - y) <= EPS;
 
         switch (m) {
             case 3:
                 return new Triangle(sides[0], sides[1], sides[2]);
             case 4: {
-                // Tolerant check: find two distinct lengths (within EPS)
                 double a = sides[0];
                 boolean allEqual = true;
                 for (int i = 1; i < 4; i++) if (!eq.test(a, sides[i])) { allEqual = false; break; }
                 if (allEqual) return new Square(a);
 
-                // Count groups by tolerance
                 Map<Double, Integer> groups = new HashMap<>();
                 outer:
                 for (double s : sides) {
@@ -38,7 +35,6 @@ public class Poligonos {
                     var e1 = it.next();
                     var e2 = it.next();
                     if ((e1.getValue() == 2 && e2.getValue() == 2) || (e1.getValue() == 1 && e2.getValue() == 3) || (e1.getValue() == 3 && e2.getValue() == 1)) {
-                        // Determine distinct sides for rectangle constructor: pick representative keys
                         return new Rectangle(e1.getKey(), e2.getKey());
                     }
                 }

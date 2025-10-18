@@ -7,8 +7,8 @@ public class Medico {
 
     private String nombre;
     private String especialidad;
-    private Hospital hospital; // reference to hospital (one-to-many)
-    private final List<Paciente> pacientes = new ArrayList<>(); // many-to-many
+    private Hospital hospital; 
+    private final List<Paciente> pacientes = new ArrayList<>(); 
 
     public Medico(String nombre, String especialidad) {
 
@@ -38,7 +38,6 @@ public class Medico {
 
     public List<Paciente> getPacientes() { return pacientes; }
 
-    // Many-to-many helpers
     public void addPaciente(Paciente p) {
         if (p == null) return;
         if (!pacientes.contains(p)) pacientes.add(p);

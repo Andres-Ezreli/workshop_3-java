@@ -28,7 +28,6 @@ public class Paciente {
 
     public List<Medico> getMedicos() { return medicos; }
 
-    // Many-to-many helpers
     public void addMedico(Medico m) {
         if (m == null) return;
         if (!medicos.contains(m)) medicos.add(m);
