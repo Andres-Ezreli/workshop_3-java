@@ -1,4 +1,4 @@
-package EmployerAdmin;
+
 
 public abstract class Empleado {
     private String nombre;

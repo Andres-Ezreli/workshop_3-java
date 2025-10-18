@@ -1,4 +1,4 @@
-package EmployerAdmin;
+
 
 public class Profesor extends Empleado {
     private Curso curso;

@@ -1,4 +1,4 @@
-package EmployerAdmin;
+
 
 public class Nomina {
     public static void generarPago(Empleado empleado) {

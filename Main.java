@@ -1,13 +1,13 @@
 public class Main {
     public static void main(String[] args) {
-        System.out.println("--- emplyer stuff ---");
+        System.out.println("--- employer ---");
         {
-            EmployerAdmin.Curso java101 = new EmployerAdmin.Curso("Java 101");
-            EmployerAdmin.Profesor prof = new EmployerAdmin.Profesor("Ana Perez", java101, 500.0);
-            EmployerAdmin.Administrador admin = new EmployerAdmin.Administrador("Luis Gomez", "Recursos Humanos", 400.0);
+            Curso java101 = new Curso("Java 101");
+            Profesor prof = new Profesor("Ana Perez", java101, 500.0);
+            Administrador admin = new Administrador("Luis Gomez", "Recursos Humanos", 400.0);
 
-            EmployerAdmin.Nomina.generarPago(prof);
-            EmployerAdmin.Nomina.generarPago(admin);
+            Nomina.generarPago(prof);
+            Nomina.generarPago(admin);
         }
 
         System.out.println("\n--- figures ---");
