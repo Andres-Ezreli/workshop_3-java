@@ -1,7 +1,29 @@
-package Hospital;
-
 public class Main {
+
     public static void main(String[] args) {
+        Curso java101 = new Curso("Java 101");
+        Profesor prof = new Profesor("Ana Perez", java101, 500.0);
+        Administrador admin = new Administrador("Luis Gomez", "Recursos Humanos", 400.0);
+
+        Nomina.generarPago(prof);
+        Nomina.generarPago(admin);
+
+        double[][] examples = new double[][]{
+            {3,4,5},
+            {4, 6, 4, 6},
+            {5, 5, 5, 5, 5},
+            {6, 6, 6, 6, 6, 6}
+        };
+
+        for (double[] ex : examples) {
+            try {
+                Poligono p = Poligonos.fromSides(ex);
+                System.out.printf("%s -> %s%n", java.util.Arrays.toString(ex), p.obtenerInfo());
+            } catch (Exception e) {
+                System.out.printf("Input %s -> ERROR: %s%n", java.util.Arrays.toString(ex), e.getMessage());
+            }
+        }
+
         Hospital h = new Hospital("Hospital La Milagrosa");
 
         // Create medicos
@@ -33,7 +55,7 @@ public class Main {
 
         System.out.println(h);
         System.out.println("Medicos:");
-        for (Medico m : h.getMedicos()) System.out.println("  " + m + " -> Hospital=" + m.getHospital().getNombre());
+    for (Medico m : h.getMedicos()) System.out.println("  " + m + " -> Hospital=" + m.getHospital().getNombre());
 
         System.out.println("Pacientes:");
         for (Paciente p : h.getPacientes()) System.out.println("  " + p + " -> Hospital=" + p.getHospital().getNombre());
@@ -44,5 +66,5 @@ public class Main {
         System.out.println(p3.getNombre() + " medicos: " + p3.getMedicos());
 
         System.out.println(m2.getNombre() + " pacientes: " + m2.getPacientes());
-    }
+	}
 }
