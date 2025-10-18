@@ -1,29 +1,21 @@
-public class Empleado {
-    private String nombre;
-    protected double salarioBase = 1000.0;
+package EmployerAdmin;
 
-    public Empleado(String nombre) {
-        if (nombre == null || nombre.trim().isEmpty()) {
-            throw new IllegalArgumentException("Nombre no puede estar vacío");
-        }
-        this.nombre = nombre.trim();
+public abstract class Empleado {
+    private String nombre;
+    private double salario;
+
+    public Empleado(String nombre, double salario) {
+        this.nombre = nombre;
+        this.salario = salario;
     }
 
     public String getNombre() {
         return nombre;
     }
 
-    public double calcularSalario() {
-        return salarioBase;
+    public double getSalario() {
+        return salario;
     }
 
-    public void setSalarioBase(double salarioBase) {
-        if (salarioBase < 0) throw new IllegalArgumentException("Salario base no puede ser negativo");
-        this.salarioBase = salarioBase;
-    }
-
-    @Override
-    public String toString() {
-        return String.format("Empleado{name='%s'}", nombre);
-    }
+    public abstract double calcularSalario();
 }
