@@ -1,14 +1,20 @@
 package Polygons;
 
-public class Square extends Polygon {
+import java.util.List;
+
+public class Square extends Poligono {
     private final double side;
 
     public Square(double side) {
-        if (side <= 0) throw new IllegalArgumentException("Lado debe ser positivo");
+        super(List.of(side, side, side, side));
         this.side = side;
     }
 
-    @Override public double perimeter() { return 4 * side; }
-    @Override public double area() { return side * side; }
-    @Override public String describe() { return String.format("Square(side=%.3f)", side); }
+    @Override
+    public double calcularArea() {
+        return side * side;
+    }
+
+    @Override
+    public String toString() { return String.format("Cuadrado(lado=%.3f)", side); }
 }

@@ -1,16 +1,20 @@
 package Polygons;
 
-public class RegularHexagon extends Polygon {
+import java.util.List;
+
+public class RegularHexagon extends Poligono {
     private final double s;
 
     public RegularHexagon(double s) {
-        if (s <= 0) throw new IllegalArgumentException("Lado debe ser positivo");
+        super(List.of(s, s, s, s, s, s));
         this.s = s;
     }
 
-    @Override public double perimeter() { return 6 * s; }
+    @Override
+    public double calcularArea() {
+        return (3.0 * Math.sqrt(3.0) / 2.0) * s * s;
+    }
 
-    @Override public double area() { return (3.0 * Math.sqrt(3.0) / 2.0) * s * s; }
-
-    @Override public String describe() { return String.format("RegularHexagon(side=%.3f)", s); }
+    @Override
+    public String toString() { return String.format("Hexágono regular(lado=%.3f)", s); }
 }

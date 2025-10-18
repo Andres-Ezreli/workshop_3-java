@@ -1,19 +1,22 @@
 package Polygons;
 
-public class RegularPentagon extends Polygon {
+import java.util.List;
+
+public class RegularPentagon extends Poligono {
     private final double s;
 
     public RegularPentagon(double s) {
-        if (s <= 0) throw new IllegalArgumentException("Lado debe ser positivo");
+        super(List.of(s, s, s, s, s));
         this.s = s;
     }
 
-    @Override public double perimeter() { return 5 * s; }
-
-    @Override public double area() {
-        double a = s / (2.0 * Math.tan(Math.PI / 5.0));
-        return perimeter() * a / 2.0;
+    @Override
+    public double calcularArea() {
+        double per = perimetro();
+        double apotema = s / (2.0 * Math.tan(Math.PI / 5.0));
+        return per * apotema / 2.0;
     }
 
-    @Override public String describe() { return String.format("RegularPentagon(side=%.3f)", s); }
+    @Override
+    public String toString() { return String.format("Pentágono regular(lado=%.3f)", s); }
 }

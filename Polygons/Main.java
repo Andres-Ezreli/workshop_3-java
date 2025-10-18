@@ -11,8 +11,8 @@ public class Main {
 
         for (double[] ex : examples) {
             try {
-                Polygon p = Poligonos.fromSides(ex);
-                System.out.printf("%s -> Perimeter=%.4f, Area=%.4f%n", p.describe(), p.perimeter(), p.area());
+                Poligono p = Poligonos.fromSides(ex);
+                System.out.printf("%s -> %s%n", java.util.Arrays.toString(ex), p.obtenerInfo());
             } catch (Exception e) {
                 System.out.printf("Input %s -> ERROR: %s%n", java.util.Arrays.toString(ex), e.getMessage());
             }
