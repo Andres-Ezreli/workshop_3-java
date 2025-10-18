@@ -2,20 +2,28 @@ package EmployerAdmin;
 
 public abstract class Empleado {
     private String nombre;
-    private double salario;
+    private double salarioBase;
+    private double bonification;
 
-    public Empleado(String nombre, double salario) {
+    public Empleado(String nombre, double salarioBase, double bonification) {
         this.nombre = nombre;
-        this.salario = salario;
+        this.salarioBase = salarioBase;
+        this.bonification = bonification;
     }
 
     public String getNombre() {
         return nombre;
     }
 
-    public double getSalario() {
-        return salario;
+    public double getSalarioBase() {
+        return salarioBase;
     }
 
-    public abstract double calcularSalario();
+    public double getBonification() {
+        return bonification;
+    }
+
+    public double calcularSalario() {
+        return getSalarioBase() + getBonification();
+    }
 }

@@ -5,8 +5,8 @@ package EmployerAdmin;
 public class Profesor extends Empleado {
     private Curso curso;
 
-    public Profesor(String nombre, Curso curso, double salario) {
-        super(nombre, salario);
+    public Profesor(String nombre, Curso curso, double salarioBase, double bonification) {
+        super(nombre, salarioBase, bonification);
         this.curso = curso;
     }
 
@@ -16,6 +16,6 @@ public class Profesor extends Empleado {
 
     @Override
     public double calcularSalario() {
-        return getSalario() * 1.1; // Bono del 10%
+        return super.calcularSalario() * 1.1; // Bono del 10%
     }
 }

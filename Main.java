@@ -34,16 +34,14 @@ public class Main {
         employerButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String output = runEmployerAdminLogic();
-                showOutputDialog(frame, "Employer Admin Output", output);
+                runEmployerAdminLogic(frame);
             }
         });
 
         polygonsButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String output = runPolygonsLogic();
-                showOutputDialog(frame, "Polygons Output", output);
+                runPolygonsLogic(frame);
             }
         });
 
@@ -74,37 +72,66 @@ public class Main {
         JOptionPane.showMessageDialog(parent, scrollPane, title, JOptionPane.INFORMATION_MESSAGE);
     }
 
-    private static String runEmployerAdminLogic() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("--- Employer Admin ---\n");
-        Curso java101 = new Curso("Java 101");
-        Profesor prof = new Profesor("Ana Perez", java101, 500.0);
-        Administrador admin = new Administrador("Luis Gomez", "Recursos Humanos", 400.0);
+    private static void runEmployerAdminLogic(JFrame parent) {
+        String[] options = {"Create Administrator", "Create Professor"};
+        int choice = JOptionPane.showOptionDialog(parent, "Select an employee type to create:",
+                "Employer Admin", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
+                null, options, options[0]);
 
-        sb.append(Nomina.generarPago(prof)).append("\n");
-        sb.append(Nomina.generarPago(admin)).append("\n");
-        return sb.toString();
+        if (choice == -1) return; // User closed the dialog
+
+        try {
+            String nombre = JOptionPane.showInputDialog(parent, "Enter name:");
+            if (nombre == null) return;
+
+            double salarioBase = Double.parseDouble(JOptionPane.showInputDialog(parent, "Enter base salary:"));
+            double bonification = Double.parseDouble(JOptionPane.showInputDialog(parent, "Enter bonification:"));
+
+            if (choice == 0) { // Administrator
+                String departamento = JOptionPane.showInputDialog(parent, "Enter department:");
+                if (departamento == null) return;
+
+                Administrador admin = new Administrador(nombre, departamento, salarioBase, bonification);
+                String output = Nomina.generarPago(admin);
+                showOutputDialog(parent, "Administrator Details", output);
+
+            } else { // Professor
+                String cursoStr = JOptionPane.showInputDialog(parent, "Enter course name:");
+                if (cursoStr == null) return;
+                Curso curso = new Curso(cursoStr);
+
+                Profesor prof = new Profesor(nombre, curso, salarioBase, bonification);
+                String output = Nomina.generarPago(prof);
+                showOutputDialog(parent, "Professor Details", output);
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(parent, "Invalid number format.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
-    private static String runPolygonsLogic() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("--- Polygons ---\n");
-        double[][] examples = new double[][]{
-            {3, 4, 5},
-            {4, 6, 4, 6},
-            {5, 5, 5, 5, 5},
-            {6, 6, 6, 6, 6, 6}
-        };
-
-        for (double[] ex : examples) {
-            try {
-                Poligono p = Poligonos.fromSides(ex);
-                sb.append(String.format("%s -> %s%n", java.util.Arrays.toString(ex), p.obtenerInfo()));
-            } catch (Exception e) {
-                sb.append(String.format("Input %s -> ERROR: %s%n", java.util.Arrays.toString(ex), e.getMessage()));
-            }
+    private static void runPolygonsLogic(JFrame parent) {
+        String input = JOptionPane.showInputDialog(parent, "Enter side lengths, separated by commas (e.g., 3,4,5):");
+        if (input == null || input.trim().isEmpty()) {
+            return;
         }
-        return sb.toString();
+
+        try {
+            String[] sideStrings = input.split(",");
+            double[] sides = new double[sideStrings.length];
+            for (int i = 0; i < sideStrings.length; i++) {
+                sides[i] = Double.parseDouble(sideStrings[i].trim());
+            }
+
+            Poligono p = Poligonos.fromSides(sides);
+            String output = String.format("Input: %s\nOutput: %s", input, p.obtenerInfo());
+            showOutputDialog(parent, "Polygon Details", output);
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(parent, "Invalid number format. Please enter numbers separated by commas.", "Error", JOptionPane.ERROR_MESSAGE);
+        } catch (IllegalArgumentException e) {
+            String output = String.format("Input: %s\nError: %s", input, e.getMessage());
+            showOutputDialog(parent, "Polygon Error", output);
+        }
     }
 
     private static String runHospitalLogic() {
