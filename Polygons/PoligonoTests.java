@@ -33,6 +33,26 @@ public class PoligonoTests {
             return approxEquals(p.calcularArea(), expected, EPS);
         });
 
+        runTest("Tipo Triangulo", () -> {
+            Poligono p = Poligonos.fromSides(new double[]{3,4,5});
+            return p.tipoPoligono().equals("Triángulo");
+        });
+
+        runTest("Tipo Cuadrilatero", () -> {
+            Poligono p = Poligonos.fromSides(new double[]{2,2,2,2});
+            return p.tipoPoligono().equals("Cuadrilátero");
+        });
+
+        runTest("Tipo Pentagono", () -> {
+            Poligono p = Poligonos.fromSides(new double[]{1,1,1,1,1});
+            return p.tipoPoligono().equals("Pentágono");
+        });
+
+        runTest("Tipo Hexagono", () -> {
+            Poligono p = Poligonos.fromSides(new double[]{1,1,1,1,1,1});
+            return p.tipoPoligono().equals("Hexágono");
+        });
+
         System.out.println("All tests executed.");
     }
 
