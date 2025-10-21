@@ -1,5 +1,3 @@
-
-
 package Hospital;
 
 import java.util.ArrayList;
@@ -8,16 +6,20 @@ import java.util.List;
 public class Paciente {
     private String nombre;
     private int edad;
+    private String historiaClinica;
     private Hospital hospital; // reference
     private final List<Medico> medicos = new ArrayList<>();
 
-    public Paciente(String nombre, int edad) {
+    public Paciente(String nombre, int edad, String historiaClinica) {
         this.nombre = nombre;
         this.edad = edad;
+        this.historiaClinica = historiaClinica;
     }
 
     public String getNombre() { return nombre; }
     public int getEdad() { return edad; }
+    public String getHistoriaClinica() { return historiaClinica; }
+    public void setHistoriaClinica(String historiaClinica) { this.historiaClinica = historiaClinica; }
 
     public Hospital getHospital() { return hospital; }
     public void setHospital(Hospital hospital) {
@@ -45,6 +47,8 @@ public class Paciente {
 
     @Override
     public String toString() {
-        return String.format("Paciente{name='%s', edad=%d, medicos=%d}", nombre, edad, medicos.size());
+        return String.format("Paciente{name='%s', edad=%d, medicos=%d, historiaClinica='%s'}", 
+            nombre, edad, medicos.size(), 
+            historiaClinica != null ? historiaClinica.substring(0, Math.min(30, historiaClinica.length())) + "..." : "No registrada");
     }
 }
